@@ -32,6 +32,7 @@ public class NumberPicker: UIViewController {
     var titleLblTopConstraint: NSLayoutConstraint?
 
     var isPickerOpen = false
+    private let generator = UISelectionFeedbackGenerator()
 
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -73,6 +74,7 @@ public class NumberPicker: UIViewController {
     var selectedNumber: Int = 0 {
         didSet {
             self.numberLbl.text = "\(selectedNumber)"
+            generator.selectionChanged()
         }
     }
 
