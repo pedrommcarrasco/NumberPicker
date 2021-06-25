@@ -19,7 +19,7 @@ let package = Package(
             dependencies: [],
             path: "NumberPicker",
             resources: [
-                .process("Images")
+                .process("NumberPicker.xcassets")
             ]
         )
     ]

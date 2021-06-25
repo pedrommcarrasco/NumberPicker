@@ -102,6 +102,7 @@ public class NumberPicker: UIViewController {
         bgView = createView()
         bgView.backgroundColor = UIColor(white: 0, alpha: 0.65)
         bgView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissController)))
+        bgView.addGestureRecognizer(UISwipeGestureRecognizer(target: self, action: #selector(dismissController)))
 
         pickerView = createView()
         pickerView.layer.masksToBounds = true
