@@ -247,7 +247,7 @@ public class NumberPicker: UIViewController {
     }
 
     func getImageFromBundle(_ name: String) -> UIImage {
-        let primaryBundle = Bundle(for: NumberPicker.self)
+        let primaryBundle = Bundle.module
         if let image = UIImage(named: name, in: primaryBundle, compatibleWith: nil) {
             return image
         } else if
