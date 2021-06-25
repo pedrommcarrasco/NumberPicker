@@ -59,8 +59,8 @@ public class NumberPicker: UIViewController {
     let cellId = "cellId"
 
     lazy var arrowImageView: UIImageView = {
-        let img: UIImage = getImageFromBundle("arrow")
-        let imgView = UIImageView(image: img.withRenderingMode(.alwaysTemplate))
+        let img = UIImage(systemName: "arrow.up")
+        let imgView = UIImageView(image: img)
         imgView.translatesAutoresizingMaskIntoConstraints = false
         imgView.tintColor = tintColor
         imgView.contentMode = .scaleAspectFit
@@ -107,8 +107,8 @@ public class NumberPicker: UIViewController {
         pickerView = createView()
         pickerView.layer.masksToBounds = true
 
-        cancelBtn = createBtn(getImageFromBundle("cancel"))
-        doneBtn = createBtn(getImageFromBundle("done"))
+        cancelBtn = createBtn(UIImage(systemName: "xmark"))
+        doneBtn = createBtn(UIImage(systemName: "checkmark"))
 
         titleLbl = createLabel(heading, fontSize: 18)
         numberLbl = createLabel("0", fontSize: 30)
@@ -237,7 +237,7 @@ public class NumberPicker: UIViewController {
         return lbl
     }
 
-    func createBtn(_ image: UIImage) -> UIButton {
+    func createBtn(_ image: UIImage?) -> UIButton {
         let btn = UIButton(type: .system)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.imageView?.contentMode = .scaleAspectFit
@@ -245,20 +245,6 @@ public class NumberPicker: UIViewController {
         btn.tintColor = tintColor
         btn.addTarget(self, action: #selector(btnTapped(_:)), for: .touchUpInside)
         return btn
-    }
-
-    func getImageFromBundle(_ name: String) -> UIImage {
-        let primaryBundle = Bundle.module
-        if let image = UIImage(named: name, in: primaryBundle, compatibleWith: nil) {
-            return image
-        } else if
-            let subBundleUrl = primaryBundle.url(forResource: "NumberPicker", withExtension: "bundle"),
-            let subBundle = Bundle(url: subBundleUrl),
-            let image = UIImage(named: name, in: subBundle, compatibleWith: nil)
-        {
-            return image
-        }
-        return UIImage()
     }
 
     required init?(coder aDecoder: NSCoder) {
