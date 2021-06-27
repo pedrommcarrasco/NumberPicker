@@ -8,19 +8,14 @@
 
 import UIKit
 
-public protocol NumberPickerDelegate {
-    func selectedNumber(_ number: Int)
-}
-
 public class NumberPicker: UIViewController {
-
-    public var delegate: NumberPickerDelegate?
     public var maxNumber: Int = 0
     public var minNumber: Int = 0
     public var bgGradients: [UIColor] = [.white, .white]
     public var tintColor = UIColor.black
     public var heading = ""
     public var defaultSelectedNumber: Int = 0
+    public var onSelectNumber: ((Int) -> Void)
 
     var bgView, pickerView: UIView!
     var cancelBtn, doneBtn: UIButton!
@@ -186,7 +181,7 @@ public class NumberPicker: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
             self.dismiss(animated: true, completion: {
                 if sender == self.doneBtn {
-                    self.delegate?.selectedNumber(self.selectedNumber)
+                    self.onSelectNumber(self.selectedNumber)
                 }
             })
         }
