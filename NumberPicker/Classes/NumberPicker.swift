@@ -15,7 +15,7 @@ public class NumberPicker: UIViewController {
     public var tintColor = UIColor.black
     public var heading = ""
     public var defaultSelectedNumber: Int = 0
-    public var onSelectNumber: ((Int) -> Void)
+    public var onSelectNumber: ((Int) -> Void)?
 
     var bgView, pickerView: UIView!
     var cancelBtn, doneBtn: UIButton!
@@ -181,7 +181,7 @@ public class NumberPicker: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
             self.dismiss(animated: true, completion: {
                 if sender == self.doneBtn {
-                    self.onSelectNumber(self.selectedNumber)
+                    self.onSelectNumber?(self.selectedNumber)
                 }
             })
         }
