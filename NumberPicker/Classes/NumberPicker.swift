@@ -163,11 +163,15 @@ public class NumberPicker: UIViewController {
         collectionView.rightAnchor.constraint(equalTo: pickerView.rightAnchor).isActive = true
         collectionView.topAnchor.constraint(equalTo: pickerView.topAnchor, constant: 125).isActive = true
         collectionView.heightAnchor.constraint(equalToConstant: 80).isActive = true
-//        collectionView.contentInset = UIEdgeInsets(top: 0, left: pickerView.bounds.width / 2, bottom: 0, right: pickerView.bounds.width / 2)
+
 
         pickerView.addSubview(arrowImageView)
         arrowImageView.centerXAnchor.constraint(equalTo: pickerView.centerXAnchor).isActive = true
         arrowImageView.centerYAnchor.constraint(equalTo: pickerView.centerYAnchor, constant: 32 - bottomPadding/2).isActive = true
+
+        self.view.setNeedsLayout()
+        self.view.layoutIfNeeded()
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: pickerView.bounds.width / 2, bottom: 0, right: pickerView.bounds.width / 2)
     }
 
     func scrollToDefaultNumber(_ number: Int) {
