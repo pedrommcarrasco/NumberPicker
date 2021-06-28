@@ -178,25 +178,26 @@ public class NumberPicker: UIViewController {
 
     @objc func btnTapped(_ sender: UIButton) {
         self.animatePickerView()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-            self.dismiss(animated: true, completion: {
-                if sender == self.doneBtn {
-                    self.onSelectNumber?(self.selectedNumber)
-                }
-            })
+
+        if sender == self.doneBtn {
+            self.onSelectNumber?(self.selectedNumber)
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.dismiss(animated: true, completion: nil)
         }
     }
 
     @objc func dismissController() {
         self.animatePickerView()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.dismiss(animated: true, completion: nil)
         }
     }
 
     func animatePickerView() {
         pickerViewBottomConstraint?.constant = isPickerOpen ? 250 + bottomPadding + 10 : 0
-        let animationDuration = isPickerOpen ? 0.4 : 0.5
+        let animationDuration = isPickerOpen ? 0.3 : 0.5
 
         isPickerOpen = !isPickerOpen
 
