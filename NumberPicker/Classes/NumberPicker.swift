@@ -169,8 +169,8 @@ public class NumberPicker: UIViewController {
         arrowImageView.centerXAnchor.constraint(equalTo: pickerView.centerXAnchor).isActive = true
         arrowImageView.centerYAnchor.constraint(equalTo: pickerView.centerYAnchor, constant: 32 - bottomPadding/2).isActive = true
 
-        self.view.setNeedsLayout()
-        self.view.layoutIfNeeded()
+        self.pickerView.setNeedsLayout()
+        self.pickerView.layoutIfNeeded()
         collectionView.contentInset = UIEdgeInsets(top: 0, left: pickerView.bounds.width / 2, bottom: 0, right: pickerView.bounds.width / 2)
     }
 
