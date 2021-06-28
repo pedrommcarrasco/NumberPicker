@@ -266,13 +266,13 @@ public class NumberPicker: UIViewController {
 extension NumberPicker: UICollectionViewDelegate, UICollectionViewDataSource {
 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return maxNumber + 1
+        return (maxNumber - minNumber) + 1
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
             as! NumberPickerLineCell
-        cell.calcLineViewHeight(indexPath.row, bgColor: tintColor)
+        cell.calcLineViewHeight(indexPath.row + minNumber, bgColor: tintColor)
         return cell
     }
 }
@@ -296,7 +296,7 @@ extension NumberPicker: UIScrollViewDelegate {
         let index = (offset.x + scrollView.contentInset.left) / cellWidthIncludingSpacing
         let roundedIndex = Int(round(index))
 
-        selectedNumber = roundedIndex.clamped(to: minNumber...(maxNumber + minNumber))
+        selectedNumber = roundedIndex.clamped(to: minNumber...maxNumber)
     }
 }
 
