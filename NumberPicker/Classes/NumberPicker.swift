@@ -294,7 +294,7 @@ extension NumberPicker: UIScrollViewDelegate {
 
         let offset = scrollView.contentOffset
         let index = (offset.x + scrollView.contentInset.left) / cellWidthIncludingSpacing
-        let roundedIndex = Int(round(index))
+        let roundedIndex = Int(round(index)) + minNumber
 
         selectedNumber = roundedIndex.clamped(to: minNumber...maxNumber)
     }
