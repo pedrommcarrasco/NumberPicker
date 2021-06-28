@@ -266,7 +266,7 @@ public class NumberPicker: UIViewController {
 extension NumberPicker: UICollectionViewDelegate, UICollectionViewDataSource {
 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (maxNumber - minNumber) + 1
+        (maxNumber - minNumber) + 1
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
