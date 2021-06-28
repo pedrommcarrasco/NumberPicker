@@ -296,7 +296,12 @@ extension NumberPicker: UIScrollViewDelegate {
         let index = (offset.x + scrollView.contentInset.left) / cellWidthIncludingSpacing
         let roundedIndex = Int(round(index))
 
-        selectedNumber = max(minNumber, roundedIndex + minNumber)
+        selectedNumber = roundedIndex.clamped(to: minNumber...maxNumber)
     }
 }
 
+extension Comparable {
+    func clamped(to limits: ClosedRange<Self>) -> Self {
+        min(max(self, limits.lowerBound), limits.upperBound)
+    }
+}
